@@ -7,17 +7,13 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <form className="flex flex-col  text-black">
+          <input className="mb-4 p-3 rounded-lg" placeholder="ID" />
+          <input className="mb-4 p-3 rounded-lg" placeholder="Password" />
+          <button className="bg-blue-500 text-bold text-white rounded-lg p-3">
+            Submit
+          </button>
+        </form>
       </header>
     </div>
   );
