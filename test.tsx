@@ -14,15 +14,10 @@ function App() {
     register,
     watch,
     handleSubmit,
-    formState: {
-      errors: {
-        firstName: firstNameError,
-        lastName: lastNameError,
-        age: ageError,
-        gender: genderError,
-      },
-    },
+    formState: { errors },
   } = useForm<FormValues>();
+
+  console.log(watch());
 
   return (
     <div className="App">
@@ -39,11 +34,8 @@ function App() {
             className="mb-4 p-3 rounded-lg"
             placeholder="FirstName"
             id="FirstName"
-            {...register('firstName', { required: 'This is required' })}
+            {...(register('firstName'), { required: true })}
           />
-          {firstNameError && (
-            <div className="text-red-500">{firstNameError.message}</div>
-          )}
           <label className="text-white text-left text-bold" htmlFor="LastName">
             LastName
           </label>
@@ -51,17 +43,8 @@ function App() {
             className="mb-4 p-3 rounded-lg"
             placeholder="LastName"
             id="LastName"
-            {...register('lastName', {
-              required: true,
-              maxLength: {
-                value: 4,
-                message: 'You exceeded the maximum value',
-              },
-            })}
+            {...(register('lastName'), { required: true })}
           />
-          {lastNameError && (
-            <div className="text-red-500">{lastNameError.message}</div>
-          )}
           <label className="text-white text-left text-bold" htmlFor="Age">
             Age
           </label>
@@ -69,12 +52,12 @@ function App() {
             className="mb-4 p-3 rounded-lg"
             placeholder="Age"
             id="Age"
-            {...register('age', { required: true, valueAsNumber: true })}
+            {...(register('age', { valueAsNumber: true }), { required: true })}
           />
           <select
             className="p-3 rounded-lg mb-4"
             id="Gender"
-            {...register('gender', { required: true })}
+            {...(register('gender'), { required: true })}
           >
             <option>male</option>
             <option>female</option>
