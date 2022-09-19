@@ -15,6 +15,9 @@ function App() {
     watch,
     handleSubmit,
     formState: {
+      isValid,
+      isDirty,
+      dirtyFields,
       errors: {
         firstName: firstNameError,
         lastName: lastNameError,
@@ -23,6 +26,10 @@ function App() {
       },
     },
   } = useForm<FormValues>();
+
+  console.log('isValid', isValid);
+  console.log('isDirty', isDirty);
+  console.log('dirtyFields', dirtyFields);
 
   return (
     <div className="App">
@@ -79,7 +86,10 @@ function App() {
             <option>male</option>
             <option>female</option>
           </select>
-          <button className="bg-blue-500 text-bold text-white rounded-lg p-3">
+          <button
+            className="bg-blue-500 text-bold text-white rounded-lg p-3"
+            disabled={!isValid}
+          >
             Submit
           </button>
         </form>
