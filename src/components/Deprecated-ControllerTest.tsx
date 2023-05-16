@@ -25,8 +25,6 @@ const ControllerTest = () => {
     formState: { errors, isValid },
   } = useForm<FormType>({ mode: 'all', resolver: yupResolver(schema) });
 
-  console.log(typeof schema);
-
   return (
     <form
       onSubmit={handleSubmit((data) => {
